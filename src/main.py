@@ -1,12 +1,12 @@
-from typing import Optional, List
+from typing import List, Optional
 
+from fastapi import FastAPI
 from sqlalchemy import update
 from sqlalchemy.future import select
 
 import schemas
+from database import Base, engine, session
 from models import Recipes as RecipeModel
-from fastapi import FastAPI
-from database import engine, Base, session
 
 app = FastAPI()
 

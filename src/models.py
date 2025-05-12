@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Date, update
+from sqlalchemy import Column, Date, Integer, String, update
+
 from database import Base
 
 
