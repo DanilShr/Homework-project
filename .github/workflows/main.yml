@@ -19,7 +19,7 @@ jobs:
       - name: Black
         run: black --diff --check src/*.py
       - name: Isort
-        run: isort --check only --diff src/*.py
+        run: isort --check-only --diff src/*.py
       - name: Mypy
         run: mypy src/*.py
    
