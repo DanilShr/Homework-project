@@ -1,0 +1,5 @@
+﻿SQLAlchemy==2.0.38
+fastapi==0.115.12
+black
+isort
+mypy
