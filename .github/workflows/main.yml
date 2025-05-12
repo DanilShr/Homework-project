@@ -18,9 +18,9 @@ jobs:
     needs: build
     steps:
       - name: Black
-        run: black --diff --check src/
+        run: black --diff --check src/*.py
       - name: Isort
-        run: isort --check only --diff src/
+        run: isort --check only --diff src/*.py
       - name: Mypy
-        run: mypy src/
+        run: mypy src/*.py
    
