@@ -12,14 +12,20 @@ jobs:
 
       - name: Set up python
         uses: actions/setup-python@v2
-      - name: Set up dependencies
+      - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-        
+          python -m venv venv                # Создание виртуального окружения
+          source venv/bin/activate           # Активация виртуального окружения
+          pip install -r requirements.txt    # Установка зависимостей
+          pip install black                   # Установка black
+
   test_app:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Run test
+        run: |
+          source venv/bin/activate
       - name: Black
         run: black --diff --check src/*.py
       - name: Isort
