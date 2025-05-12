@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up python
+        uses: actions/setup-python@v2
+      - name: Set up dependencies
+        run: pip install -r requirements.txt
+        
+  test_app:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Black
+        run: black --diff --check src/
+      - name: Isort
+        run: isort --check only --diff src/
+      - name: Mypy
+        run: mypy src/
+   
