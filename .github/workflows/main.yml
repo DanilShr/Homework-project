@@ -19,10 +19,6 @@ jobs:
           pip install -r requirements.txt    # Установка зависимостей
           pip install black                   # Установка black
 
-  test_app:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Run test
         run: |
           source venv/bin/activate
