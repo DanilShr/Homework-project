@@ -23,24 +23,25 @@ async def shutdown():
     await engine.dispose()
 
 
-@app.get('/recipes', response_model=List[schemas.RecipesOut])
-@app.get('/recipes/{idx}', response_model=List[schemas.RecipesOut])
-async def get_recipe(
-        idx: Optional[int] = None) -> List[schemas.RecipesOut]:
+@app.get("/recipes", response_model=List[schemas.RecipesOut])
+@app.get("/recipes/{idx}", response_model=List[schemas.RecipesOut])
+async def get_recipe(idx: Optional[int] = None) -> List[schemas.RecipesOut]:
     if idx:
         result = await session.execute(
             select(
                 RecipeModel.name,
                 RecipeModel.time_dish,
                 RecipeModel.ingredients,
-                RecipeModel.description).
-            where(RecipeModel.id == idx).
-            order_by(RecipeModel.count, RecipeModel.time_dish))
+                RecipeModel.description,
+            )
+            .where(RecipeModel.id == idx)
+            .order_by(RecipeModel.count, RecipeModel.time_dish)
+        )
 
         query = (
-            update(RecipeModel).
-            where(RecipeModel.id == idx).
-            values(count=RecipeModel.count + 1)
+            update(RecipeModel)
+            .where(RecipeModel.id == idx)
+            .values(count=RecipeModel.count + 1)
         )
         await session.execute(query)
         recipe_data = result.mappings().all()
@@ -54,7 +55,7 @@ async def get_recipe(
                 RecipeModel.name,
                 RecipeModel.time_dish,
                 RecipeModel.ingredients,
-                RecipeModel.description
+                RecipeModel.description,
             ).order_by(RecipeModel.count, RecipeModel.time_dish)
         )
         recipe_data = result.mappings().all()
@@ -64,7 +65,7 @@ async def get_recipe(
         return recipe_data
 
 
-@app.post('/recipes', response_model=schemas.Recipes)
+@app.post("/recipes", response_model=schemas.Recipes)
 async def create_recipe(recipes: schemas.Recipes) -> RecipeModel:
     new_recipes = RecipeModel(**recipes.dict())
     async with session.begin():
