@@ -17,9 +17,11 @@ jobs:
           pip install -r requirements.txt    # Установка зависимостей
 
       - name: Black
-        run: black --diff --check src/*.py
+        run: black --diff --check src/
       - name: Isort
-        run: isort --check-only --diff src/*.py
+        run: isort --check-only --diff src/
       - name: Mypy
-        run: mypy src/*.py
+        run: mypy src/
+      - name: Flake8
+        run: flake8 src/
    
