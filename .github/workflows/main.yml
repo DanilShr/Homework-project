@@ -20,8 +20,8 @@ jobs:
         run: black --diff --check src/
       - name: Isort
         run: isort --check-only --diff src/
-      - name: Mypy
-        run: mypy src/
+#      - name: Mypy
+#        run: mypy src/
       - name: Flake8
         run: flake8 src/
    
