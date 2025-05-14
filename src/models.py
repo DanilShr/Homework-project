@@ -1,6 +1,5 @@
+from homework.src.database import Base
 from sqlalchemy import Column, Integer, String, update
-
-from database import Base
 
 
 class Recipes(Base):
