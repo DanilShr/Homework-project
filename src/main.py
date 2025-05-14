@@ -4,9 +4,9 @@ from fastapi import FastAPI
 from sqlalchemy import update
 from sqlalchemy.future import select
 
-import schemas
-from database import Base, engine, session
-from models import Recipes as RecipeModel
+import homework.src.schemas as schemas
+from homework.src.database import Base, engine, session
+from homework.src.models import Recipes as RecipeModel
 
 app = FastAPI()
 
@@ -23,8 +23,7 @@ async def shutdown():
     await engine.dispose()
 
 
-@app.get("/recipes", response_model=
-ist[schemas.RecipesOut])
+@app.get("/recipes", response_model=List[schemas.RecipesOut])
 @app.get("/recipes/{idx}", response_model=List[schemas.RecipesOut])
 async def get_recipe(idx: Optional[int] = None) -> List[schemas.RecipesOut]:
     if idx:
