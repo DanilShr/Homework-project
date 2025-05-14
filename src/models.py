@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Date, Integer, String, update
+from sqlalchemy import (Column, Integer,
+                        String, update)
 
 from database import Base
 
@@ -16,6 +17,7 @@ class Recipes(Base):
     async def view(cls, session, id):
         async with session.begin():
             query = (
-                update(Recipes).where(Recipes.id == id).values(count=Recipes.count + 1)
+                update(Recipes).where(Recipes.id == id).
+                values(count=Recipes.count + 1)
             )
             await session.execute(query)
