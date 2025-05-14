@@ -6,5 +6,6 @@ engine = create_async_engine("sqlite+aiosqlite:///./app.db", echo=True)
 
 Base = declarative_base()
 
-async_session = sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
+async_session = sessionmaker(engine, expire_on_commit=False,
+                             class_=AsyncSession)
 session = async_session()
