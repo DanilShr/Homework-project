@@ -24,7 +24,8 @@ async def shutdown():
 
 
 @app.get("/recipes", response_model=List[schemas.RecipesOut])
-@app.get("/recipes/{idx}", response_model=List[schemas.RecipesOut])
+@app.get("/recipes/{idx}", response_model=
+List[schemas.RecipesOut])
 async def get_recipe(idx: Optional[int] = None) -> List[schemas.RecipesOut]:
     if idx:
         result = await session.execute(
