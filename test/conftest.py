@@ -13,8 +13,7 @@ def client():
             name="test",
             time_dish=2,
             ingredients="test",
-            description="test",
-            count=2
+            description="test"
         )
         engine.url = ("sqlite+aiosqlite:///")
         session.add(recipes)
