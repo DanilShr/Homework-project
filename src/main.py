@@ -1,12 +1,11 @@
 from typing import List, Optional
 
-from fastapi import FastAPI
-from sqlalchemy import update
-from sqlalchemy.future import select
-
 import homework.src.schemas as schemas
+from fastapi import FastAPI
 from homework.src.database import Base, engine, session
 from homework.src.models import Recipes as RecipeModel
+from sqlalchemy import update
+from sqlalchemy.future import select
 
 app = FastAPI()
 
