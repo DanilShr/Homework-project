@@ -47,8 +47,7 @@ async def get_recipe(idx: Optional[int] = None) -> List[schemas.RecipesOut]:
         recipe_data = result.mappings().all()
         print(recipe_data)
         if recipe_data:
-            recipe_data = [schemas.RecipesOut(**recipe) for recipe in
-                           recipe_data]
+            recipe_data = [schemas.RecipesOut(**recipe) for recipe in recipe_data]
             return recipe_data
     else:
         result = await session.execute(
@@ -62,8 +61,7 @@ async def get_recipe(idx: Optional[int] = None) -> List[schemas.RecipesOut]:
         recipe_data = result.mappings().all()
         print(recipe_data)
         if recipe_data:
-            recipe_data = [schemas.RecipesOut(**recipe) for recipe in
-                           recipe_data]
+            recipe_data = [schemas.RecipesOut(**recipe) for recipe in recipe_data]
         return recipe_data
 
 
