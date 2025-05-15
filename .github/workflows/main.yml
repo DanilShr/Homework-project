@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-python@v2
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt    # Установка зависимостей
+          pip install -r requirements.txt    
 
       - name: Black
         run: black --diff --check src/
@@ -26,4 +26,6 @@ jobs:
 #        run: mypy src/
 #      - name: Flake8
 #        run: flake8 src/
+      - name: Test module
+        run: pytest tests/my-directory
    
